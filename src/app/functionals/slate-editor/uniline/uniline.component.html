@@ -1,0 +1,13 @@
+<h3 class="d-flex justify-content-center">单行模式</h3>
+
+<div class="demo-richtext-container">
+  <slate-editable
+    [editor]="editor"
+    [(ngModel)]="unilineValue"
+    (ngModelChange)="unilineValueChange($event)"
+    [renderElement]="renderElement"
+    [renderText]="renderText"
+    (keydown)="keyDown($event)"
+  >
+  </slate-editable>
+</div>

@@ -1,0 +1,41 @@
+<h1 class="d-flex justify-content-center my-2">{{ title }}</h1>
+<ul class="nav">
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      href="javascript:;"
+      [routerLink]="['basic']"
+      routerLinkActive="active"
+      >Basic</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      href="javascript:;"
+      [routerLink]="['uniline']"
+      routerLinkActive="active"
+      >Uniline</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      href="javascript:;"
+      [routerLink]="['email']"
+      routerLinkActive="active"
+      >Email</a
+    >
+  </li>
+  <li class="nav-item">
+    <a
+      class="nav-link"
+      href="javascript:;"
+      [routerLink]="['mention']"
+      routerLinkActive="active"
+      >Mentions</a
+    >
+  </li>
+</ul>
+
+<router-outlet></router-outlet>

@@ -15,4 +15,11 @@ export const functions: FunctionInfo[] = [
     description: 'angular 中实现动态生成组件',
     route: 'dynamic',
   },
+  {
+    id: 2,
+    icon: 'create.png',
+    title: 'Editor',
+    description: '使用 slate angular 实现文本输入',
+    route: 'editor',
+  },
 ];

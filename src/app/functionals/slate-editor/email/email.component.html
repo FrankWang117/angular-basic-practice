@@ -1,0 +1,28 @@
+<h3 class="d-flex justify-content-center">{{ title }}</h3>
+
+<div class="demo-richtext-container">
+  <slate-editable
+    [editor]="editor"
+    [(ngModel)]="value"
+    (ngModelChange)="valueChange($event)"
+    [renderElement]="renderElement"
+    [keydown]="onKeydown"
+    [blur]="onBlur"
+    [focus]="onFocus"
+  >
+    <ng-template
+      #emailTemplate
+      let-context="context"
+      let-viewContext="viewContext"
+    >
+      <span
+        slateElement
+        [context]="context"
+        [viewContext]="viewContext"
+        class="comment-email mr-1"
+        [ngClass]="{ focus: context.selection }"
+        >{{ context.element.character }}</span
+      >
+    </ng-template>
+  </slate-editable>
+</div>

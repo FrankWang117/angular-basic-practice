@@ -60,9 +60,7 @@ export class FunctionalEditorInsertDynamicDataComponent implements OnInit {
   ngOnInit() {}
 
   public onBlur = (event: FocusEvent) => {
-    console.log(event);
     this.setTarget();
-    console.log(this.target);
   };
 
   private setTarget() {
@@ -87,26 +85,24 @@ export class FunctionalEditorInsertDynamicDataComponent implements OnInit {
     return null;
   };
 
+  resetFocus() {
+    AngularEditor.focus(this.editor);
+  }
+
   public addDynamic(item: any) {
-    console.log('⬇️ This is 🌟 addDynamic 🌟 value start line ⬇️');
-    console.log(item);
-    console.log('⬆️ This is end ⬆️');
+    event.stopPropagation();
     if (this.target) {
       const { anchor } = this.target;
-      const currentRange = Editor.range(this.editor, anchor);
-      // const currentText = Editor.string(this.editor, currentRange);
       this.insertDynamicData(this.editor, item, anchor);
       this.target = null;
     }
   }
+
   private insertDynamicData = (
     editor: Editor,
     stepData: any,
     optionAt?: Location
   ) => {
-    console.log('⬇️ This is 🌟 optionAt 🌟 value start line ⬇️');
-    console.log(optionAt);
-    console.log('⬆️ This is end ⬆️');
     const dynamicData: LabelElement = {
       type: 'dynamic',
       data: stepData,
@@ -118,16 +114,8 @@ export class FunctionalEditorInsertDynamicDataComponent implements OnInit {
       optionAt ? { at: optionAt } : undefined
     );
 
-    // Transforms.select(editor, Editor.after(editor, optionAt));
     Transforms.select(editor, editor.selection);
-    // Transforms.move(editor);
-
     AngularEditor.focus(editor);
-
-    // const { selection } = editor;
-    // console.log('⬇️ This is 🌟 selection 🌟 value start line ⬇️');
-    // console.log(selection);
-    // console.log('⬆️ This is end ⬆️');
   };
 }
 

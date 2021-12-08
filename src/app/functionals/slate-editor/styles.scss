@@ -6,3 +6,47 @@
   border-radius: 0.2rem;
   font-size: 12px;
 }
+.dynamic-button {
+  right: 0;
+  transform: translateY(-50%);
+}
+// label styles
+.slate-element-label {
+  display: inline-block;
+  border-width: 0 2px 0 2px;
+  border-color: transparent;
+  border-style: solid;
+}
+.common-label-focus {
+  .common-label-container {
+    border-color: transparent;
+    box-shadow: blud 0px 0px 0px 1px;
+  }
+}
+
+.common-label-container {
+  max-width: 220px;
+  width: auto;
+  border-radius: 4px;
+  cursor: pointer;
+  vertical-align: top;
+  height: 26px;
+  display: inline-flex;
+
+  &.common-label-focus {
+    border-color: transparent;
+    box-shadow: #348fe4 0px 0px 0px 1px;
+  }
+  &.readOnly {
+    cursor: inherit;
+  }
+}
+
+.common-label {
+  max-width: 220px;
+  background: #eee;
+
+  &:hover {
+    background: rgba(#348fe4, 0.2);
+  }
+}

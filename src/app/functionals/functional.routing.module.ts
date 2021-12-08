@@ -2,8 +2,10 @@ import { Routes } from '@angular/router';
 import { FunctionalDragDropComponent } from './drag-drop/drag-drop.component';
 import { FunctionalDynamicComponent } from './dynamic-component/dynamic.component';
 import { FunctionalEditorBasicComponent } from './slate-editor/basic/basic.component';
+import { FunctionalEditorDataTransformComponent } from './slate-editor/data-transform/data-transform.component';
 import { FunctionalEditorComponent } from './slate-editor/editor.component';
 import { FunctionalEditorEmailComponent } from './slate-editor/email/email.component';
+import { FunctionalEditorInsertDynamicDataComponent } from './slate-editor/insert-dynamic-data/insert.component';
 import { FunctionalEditorMentionsComponent } from './slate-editor/mentions/mentions.component';
 import { FunctionalEditorUnilineComponent } from './slate-editor/uniline/uniline.component';
 
@@ -40,6 +42,14 @@ export const functionalRoutes: Routes = [
       {
         path: 'mention',
         component: FunctionalEditorMentionsComponent,
+      },
+      {
+        path: 'transform',
+        component: FunctionalEditorDataTransformComponent,
+      },
+      {
+        path: 'dynamic',
+        component: FunctionalEditorInsertDynamicDataComponent,
       },
     ],
   },

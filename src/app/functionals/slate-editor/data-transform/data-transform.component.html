@@ -1,0 +1,10 @@
+<h3 class="d-flex justify-content-center">basic use</h3>
+<div class="demo-richtext-container">
+  <slate-editable
+    [editor]="editor"
+    [(ngModel)]="value"
+    (ngModelChange)="valueChange($event)"
+    [renderElement]="renderElement"
+  >
+  </slate-editable>
+</div>

@@ -75,6 +75,18 @@ export type EmailElement = {
   children: CustomText[];
 };
 
+export type DynamicDataElement = {
+  type: 'dynamic';
+  stepData: any;
+  children: CustomText[];
+};
+
+export type LabelElement = {
+  type: 'dynamic' | 'email';
+  data: any;
+  children: CustomText[];
+};
+
 export type ParagraphElement = { type: 'paragraph'; children: Descendant[] };
 
 export type TableElement = { type: 'table'; children: TableRowElement[] };
@@ -111,6 +123,8 @@ type CustomElement =
   | ListItemElement
   | MentionElement
   | EmailElement
+  | DynamicDataElement
+  | LabelElement
   | ParagraphElement
   | TableElement
   | TableRowElement

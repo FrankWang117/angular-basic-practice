@@ -1,0 +1,20 @@
+<slate-children
+  [children]="children"
+  [context]="childrenContext"
+  [viewContext]="viewContext"
+></slate-children>
+<span
+  class="common-label-container"
+  [class.common-label-focus]="isCollapsed"
+  [class.readOnly]="readonly"
+>
+  <span
+    contenteditable="false"
+    class="common-label text-truncate"
+    thyLabel="emboss-default"
+    thySize="lg"
+    [style.opacity]="label ? '1' : '0.5'"
+  >
+    {{ label || "错误标签" }}
+  </span>
+</span>

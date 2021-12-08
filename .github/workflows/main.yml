@@ -21,12 +21,11 @@ jobs:
         uses: actions/setup-node@v2
         with:
           node-version: ${{ matrix.node-version }}
-      - name: npm install and npm run build
+      - name: npm install and deploy
+        env:
+          GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
-          npm i
-          npm run build:prod
-      - name: Push Build to Releases
-        uses: ncipollo/release-action@v1
-        with:
-          artifacts: "dist/angular-basic-practice/*"
-          token: ${{ secrets.TOKEN }}
+          npm install
+          npm run ng deploy --base-href=/angular-basic-practice/
+】
+

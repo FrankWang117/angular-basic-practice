@@ -117,6 +117,9 @@
               "devServerTarget": "angular-basic-practice:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy"
         }
       }
     }

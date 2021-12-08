@@ -119,7 +119,12 @@
           }
         },
         "deploy": {
-          "builder": "angular-cli-ghpages:deploy"
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "/angular-basic-practice/",
+            "name": "FrankWang",
+            "email": "frankwang.develop@gmail.com"
+          }
         }
       }
     }

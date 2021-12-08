@@ -26,4 +26,4 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.TOKEN }}
         run: |
           npm install
-          npm run ng deploy --base-href=/angular-basic-practice/ --no-silent
+          npm run deploy

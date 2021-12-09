@@ -16,6 +16,7 @@ import {
 import { withHistory } from 'slate-history';
 import { AngularEditor, withAngular } from 'slate-angular';
 import { LabelElement } from 'src/types';
+import { INIT_VALUE } from 'src/app/const';
 
 @Component({
   selector: 'functional-editor-insert-dynamic-data',
@@ -27,7 +28,7 @@ export class FunctionalEditorInsertDynamicDataComponent implements OnInit {
   public value = [
     {
       type: 'paragraph',
-      children: [{ text: 'This is editable ' }],
+      children: [{ text: 'This is editable can insert Dynamic Data ' }],
     },
   ];
 
@@ -85,7 +86,11 @@ export class FunctionalEditorInsertDynamicDataComponent implements OnInit {
     return null;
   };
 
-  resetFocus() {
+  public keepEditorFocus() {
+    console.log('⬇️ This is 🌟 value 🌟 value start line ⬇️');
+    console.log(this.value);
+
+    // Transforms.setPoint(this.editor,)
     AngularEditor.focus(this.editor);
   }
 
@@ -117,6 +122,18 @@ export class FunctionalEditorInsertDynamicDataComponent implements OnInit {
     Transforms.select(editor, editor.selection);
     AngularEditor.focus(editor);
   };
+
+  public removeLabel() {
+    const { selection } = this.editor;
+    Transforms.removeNodes(this.editor, {
+      at: selection,
+    });
+    const content = this.editor.children;
+
+    if (Array.isArray(content) && content.length === 0) {
+      Transforms.insertNodes(this.editor, INIT_VALUE[0]);
+    }
+  }
 }
 
 // 插入行内元素必须要为 editor 添加这一块的属性

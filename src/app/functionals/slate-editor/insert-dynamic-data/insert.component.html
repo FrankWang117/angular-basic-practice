@@ -3,7 +3,7 @@
   <button
     class="position-absolute dynamic-button"
     mat-button
-    (click)="resetFocus()"
+    (click)="keepEditorFocus()"
     [matMenuTriggerFor]="menu"
   >
     动态数据插入
@@ -26,6 +26,7 @@
       <common-label
         [context]="context"
         [viewContext]="viewContext"
+        (removeLabelChange)="removeLabel()"
       ></common-label>
     </ng-template>
   </slate-editable>

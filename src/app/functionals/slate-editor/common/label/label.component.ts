@@ -3,7 +3,9 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  EventEmitter,
   HostListener,
+  Output,
 } from '@angular/core';
 import { Editor } from 'slate';
 import { BeforeContextChange, SlateElementContext } from 'slate-angular';
@@ -20,6 +22,9 @@ export class CommonLabelComponent
   implements BeforeContextChange<SlateElementContext>
 {
   label: string;
+
+  @Output() removeLabelChange: EventEmitter<CommonLabelComponent> =
+    new EventEmitter();
 
   @HostListener('click', ['$event'])
   handleClick(event: MouseEvent) {
@@ -38,7 +43,20 @@ export class CommonLabelComponent
   beforeContextChange = (value: SlateElementContext<LabelElement>) => {
     Promise.resolve().then(() => {});
     if (value.element?.data !== this.element?.data) {
-      this.label = value.element.data.propertyName;
+      const type = value.element?.type;
+      const data = value.element?.data;
+      if (type === 'email') {
+        this.label = data as string;
+      } else if (type === 'dynamic') {
+        this.label = data?.propertyName;
+      }
     }
   };
+
+  public removeLabel() {
+    console.log('⬇️ This is 🌟 remove 🌟 value start line ⬇️');
+    console.log(this);
+    console.log('⬆️ This is end ⬆️');
+    this.removeLabelChange.emit(this);
+  }
 }

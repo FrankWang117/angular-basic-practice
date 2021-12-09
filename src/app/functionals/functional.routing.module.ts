@@ -7,6 +7,8 @@ import { FunctionalEditorComponent } from './slate-editor/editor.component';
 import { FunctionalEditorEmailComponent } from './slate-editor/email/email.component';
 import { FunctionalEditorInsertDynamicDataComponent } from './slate-editor/insert-dynamic-data/insert.component';
 import { FunctionalEditorMentionsComponent } from './slate-editor/mentions/mentions.component';
+import { FunctionalEditorMoreTemplateComponent } from './slate-editor/more-template/more.component';
+import { FunctionalEditorReadOnlyComponent } from './slate-editor/read-only/read-only.component';
 import { FunctionalEditorUnilineComponent } from './slate-editor/uniline/uniline.component';
 
 export const functionalRoutes: Routes = [
@@ -50,6 +52,14 @@ export const functionalRoutes: Routes = [
       {
         path: 'dynamic',
         component: FunctionalEditorInsertDynamicDataComponent,
+      },
+      {
+        path: 'more',
+        component: FunctionalEditorMoreTemplateComponent,
+      },
+      {
+        path: 'read-only',
+        component: FunctionalEditorReadOnlyComponent,
       },
     ],
   },

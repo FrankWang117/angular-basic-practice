@@ -1,0 +1,45 @@
+<h3 class="d-flex justify-content-center">{{ title }}</h3>
+<p class="d-flex justify-content-around">
+    <span></span>
+    <span>
+        是否可以编辑<mat-slide-toggle
+            [checked]="isEditable"
+            (change)="toggleChange($event)"
+            >Deng！Deng！Deng！</mat-slide-toggle
+        >
+    </span>
+</p>
+<div class="demo-richtext-container position-relative">
+    <button
+        *ngIf="isEditable"
+        class="position-absolute dynamic-button"
+        mat-button
+        (click)="keepEditorFocus()"
+        [matMenuTriggerFor]="menu"
+    >
+        动态数据插入
+    </button>
+    <mat-menu #menu="matMenu">
+        <ng-container *ngFor="let item of dynamicDataList">
+            <button mat-menu-item (click)="addDynamic(item)">
+                {{ item.stepIdentifier }}{{ item.propertyName }}
+            </button>
+        </ng-container>
+    </mat-menu>
+    <slate-editable
+        [readonly]="!isEditable"
+        [editor]="editor"
+        [blur]="onBlur"
+        [(ngModel)]="value"
+        (ngModelChange)="valueChange($event)"
+        [renderElement]="renderElement"
+    >
+        <ng-template #label let-context="context" let-viewContext="viewContext">
+            <common-label
+                [context]="context"
+                [viewContext]="viewContext"
+                (removeLabelChange)="removeLabel()"
+            ></common-label>
+        </ng-template>
+    </slate-editable>
+</div>

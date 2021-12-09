@@ -24,5 +24,12 @@
         >{{ context.element.character }}</span
       >
     </ng-template>
+    <ng-template #label let-context="context" let-viewContext="viewContext">
+      <common-label
+        [context]="context"
+        [viewContext]="viewContext"
+        (removeLabelChange)="removeLabel($event)"
+      ></common-label>
+    </ng-template>
   </slate-editable>
 </div>

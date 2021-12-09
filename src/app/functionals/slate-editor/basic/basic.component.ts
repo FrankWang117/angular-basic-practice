@@ -10,35 +10,13 @@ import { withAngular } from 'slate-angular';
 })
 export class FunctionalEditorBasicComponent implements OnInit {
   title = 'slate-angular-basic';
-  public value = initialValue;
 
-  public unilineValue = [
+  public value = [
     {
       type: 'paragraph',
-      children: [{ text: 'This is editable ' }],
+      children: [{ text: 'This is basic mode. ' }],
     },
   ];
-
-  @ViewChild('heading_1', { read: TemplateRef, static: true })
-  headingOneTemplate!: TemplateRef<any>;
-
-  @ViewChild('heading_2', { read: TemplateRef, static: true })
-  headingTwoTemplate!: TemplateRef<any>;
-
-  @ViewChild('heading_3', { read: TemplateRef, static: true })
-  headingThreeTemplate!: TemplateRef<any>;
-
-  @ViewChild('blockquote', { read: TemplateRef, static: true })
-  blockquoteTemplate!: TemplateRef<any>;
-
-  @ViewChild('ul', { read: TemplateRef, static: true })
-  ulTemplate!: TemplateRef<any>;
-
-  @ViewChild('ol', { read: TemplateRef, static: true })
-  olTemplate!: TemplateRef<any>;
-
-  @ViewChild('li', { read: TemplateRef, static: true })
-  liTemplate!: TemplateRef<any>;
 
   editor = withHistory(withAngular(createEditor()));
 
@@ -53,27 +31,6 @@ export class FunctionalEditorBasicComponent implements OnInit {
   }
 
   renderElement = (element: any) => {
-    if (element.type === 'heading-one') {
-      return this.headingOneTemplate;
-    }
-    if (element.type === 'heading-two') {
-      return this.headingTwoTemplate;
-    }
-    if (element.type === 'heading-three') {
-      return this.headingThreeTemplate;
-    }
-    if (element.type === 'block-quote') {
-      return this.blockquoteTemplate;
-    }
-    if (element.type === 'numbered-list') {
-      return this.olTemplate;
-    }
-    if (element.type === 'bulleted-list') {
-      return this.ulTemplate;
-    }
-    if (element.type === 'list-item') {
-      return this.liTemplate;
-    }
     return null;
   };
 
@@ -92,50 +49,3 @@ export class FunctionalEditorBasicComponent implements OnInit {
     return null;
   };
 }
-
-const initialValue = [
-  {
-    type: 'paragraph',
-    children: [
-      { text: 'This is editable ' },
-      { text: 'rich', bold: true },
-      { text: ' text, ' },
-      { text: 'much', bold: true, italic: true },
-      { text: ' better than a ' },
-      { text: '<textarea>', 'code-line': true },
-      { text: '!' },
-    ],
-  },
-  {
-    type: 'heading-one',
-    children: [{ text: 'This is h1 ' }],
-  },
-  {
-    type: 'heading-three',
-    children: [{ text: 'This is h3 ' }],
-  },
-  {
-    type: 'paragraph',
-    children: [
-      {
-        text: `Since it's rich text, you can do things like turn a selection of text `,
-      },
-      { text: 'bold', bold: true },
-      {
-        text: ', or add a semantically rendered block quote in the middle of the page, like this:',
-      },
-    ],
-  },
-  {
-    type: 'block-quote',
-    children: [{ text: 'A wise quote.' }],
-  },
-  {
-    type: 'paragraph',
-    children: [{ text: 'Try it out for yourself!' }],
-  },
-  {
-    type: 'paragraph',
-    children: [{ text: '' }],
-  },
-];

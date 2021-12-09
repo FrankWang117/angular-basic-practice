@@ -15,7 +15,9 @@ import {
 } from 'slate';
 import { withHistory } from 'slate-history';
 import { AngularEditor, withAngular } from 'slate-angular';
-import { EmailElement } from 'src/types';
+import { LabelElement } from 'src/types';
+import { CommonLabelComponent } from '../common/label/label.component';
+import { INIT_VALUE } from 'src/app/const';
 
 @Component({
   selector: 'functional-editor-email',
@@ -26,21 +28,15 @@ export class FunctionalEditorEmailComponent implements OnInit {
 
   private target: Range;
 
-  public value: Element[] = [
-    {
-      type: 'paragraph',
-      children: [
-        {
-          text: '',
-        },
-      ],
-    },
-  ];
+  public value: Element[] = INIT_VALUE;
 
   // private startPoint = new WeakMap<Editor, Point>();
 
   @ViewChild('emailTemplate', { read: TemplateRef, static: true })
   emailTemplate!: TemplateRef<any>;
+
+  @ViewChild('label', { read: TemplateRef, static: true })
+  labelTemplate!: TemplateRef<any>;
 
   editor = withMentions(withHistory(withAngular(createEditor())));
 
@@ -61,13 +57,11 @@ export class FunctionalEditorEmailComponent implements OnInit {
       anchor: selection.anchor,
       focus: selection.focus,
     };
-    // const { selection } = this.editor;
-    // this.startPoint.set(this.editor, selection);
   }
 
   public renderElement = (element: any) => {
     if (element.type === 'email') {
-      return this.emailTemplate;
+      return this.labelTemplate;
     }
     // TODO 应该还需要一个 Flow 项目中用到的 dynamic 类型
   };
@@ -77,18 +71,7 @@ export class FunctionalEditorEmailComponent implements OnInit {
       case 'Tab':
       case 'Enter':
         event.preventDefault();
-        if (this.target) {
-          const { anchor: originAnchor } = this.target;
-          const currentRange = Editor.range(
-            this.editor,
-            originAnchor,
-            this.editor.selection?.focus
-          );
-
-          const currentText = Editor.string(this.editor, currentRange);
-          insertMention(this.editor, currentText.trim(), currentRange);
-          this.target = null;
-        }
+        this.generateEmailLabel(this.editor);
         this.cdr.detectChanges();
         break;
       case 'Escape':
@@ -104,9 +87,41 @@ export class FunctionalEditorEmailComponent implements OnInit {
     }
   };
 
-  onBlur = (event: FocusEvent) => {};
+  onBlur = (event: FocusEvent) => {
+    this.generateEmailLabel(this.editor, false);
+  };
 
   onFocus = (event: FocusEvent) => {};
+
+  public removeLabel(labelIns: CommonLabelComponent) {
+    const { selection } = this.editor;
+    Transforms.removeNodes(this.editor, {
+      at: selection,
+    });
+    const content = this.editor.children;
+
+    if (Array.isArray(content) && content.length === 0) {
+      Transforms.insertNodes(this.editor, INIT_VALUE[0]);
+    }
+  }
+
+  private generateEmailLabel(editor: Editor, isFocus: boolean = true) {
+    if (this.target) {
+      const { anchor: originAnchor } = this.target;
+      const currentRange = Editor.range(
+        editor,
+        originAnchor,
+        editor.selection?.focus
+      );
+
+      const currentText = Editor.string(editor, currentRange);
+      insertMention(editor, currentText.trim(), currentRange);
+      if (isFocus) {
+        AngularEditor.focus(editor);
+      }
+      this.target = null;
+    }
+  }
 }
 
 const withMentions = (editor: Editor) => {
@@ -125,9 +140,9 @@ const insertMention = (
   character: string,
   optionAt?: Location
 ) => {
-  const email: EmailElement = {
+  const email: LabelElement = {
     type: 'email',
-    character,
+    data: character,
     children: [{ text: '' }],
   };
   Transforms.insertNodes(
@@ -137,6 +152,5 @@ const insertMention = (
   );
   Transforms.select(editor, Editor.after(editor, optionAt));
   Transforms.move(editor);
-
-  AngularEditor.focus(editor);
+  // AngularEditor.focus(editor);
 };

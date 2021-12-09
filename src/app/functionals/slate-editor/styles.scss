@@ -8,7 +8,7 @@
 }
 .dynamic-button {
   right: 0;
-  transform: translateY(-50%);
+  transform: translateY(-100%);
 }
 // label styles
 .slate-element-label {
@@ -25,28 +25,37 @@
 }
 
 .common-label-container {
-  max-width: 220px;
+  display: inline-flex;
   width: auto;
+  max-width: 220px;
+  padding: 0 10px;
   border-radius: 4px;
-  cursor: pointer;
   vertical-align: top;
   height: 26px;
-  display: inline-flex;
+  background: #eee;
+  cursor: pointer;
 
   &.common-label-focus {
     border-color: transparent;
     box-shadow: #348fe4 0px 0px 0px 1px;
   }
+
   &.readOnly {
     cursor: inherit;
   }
-}
 
-.common-label {
-  max-width: 220px;
-  background: #eee;
+  .common-label {
+    max-width: 220px;
 
-  &:hover {
-    background: rgba(#348fe4, 0.2);
+    // &:hover {
+    //   background: rgba(#348fe4, 0.2);
+    // }
+  }
+  .dynamic-label-remove {
+    line-height: 21px;
+    font-size: 22px;
+    font-weight: 200;
+    transform: rotate(45deg);
+    user-select: none;
   }
 }

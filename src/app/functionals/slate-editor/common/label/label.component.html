@@ -4,7 +4,7 @@
   [viewContext]="viewContext"
 ></slate-children>
 <span
-  class="common-label-container"
+  class="common-label-container mr-1"
   [class.common-label-focus]="isCollapsed"
   [class.readOnly]="readonly"
 >
@@ -17,4 +17,12 @@
   >
     {{ label || "错误标签" }}
   </span>
+  <ng-container *ngIf="!readonly">
+    <span
+      class="dynamic-label-remove"
+      contenteditable="false"
+      (click)="removeLabel()"
+      >+</span
+    >
+  </ng-container>
 </span>

@@ -1,18 +1,37 @@
 <div
-  class="layout-container h-100 w-100 p-5 d-flex flex-row flex-wrap justify-content-start align-content-start"
+    class="
+        layout-container
+        h-100
+        w-100
+        p-5
+        d-flex
+        flex-row flex-wrap
+        justify-content-start
+        align-content-start
+    "
+    [ngStyle]="{ 'background-image': 'url(/assets/vector-wave.jpg)' }"
 >
-  <div
-    class="layout-container-item d-flex flex-column align-items-center mb-4 cursor-pointer"
-    *ngFor="let function of functions; let i = index; trackBy: trackByFn"
-    (click)="routeTo(function)"
-  >
-    <img
-      [src]="'./assets/icons/' + function.icon"
-      [alt]="function.description"
-      width="110"
-      height="110"
-      class="rounded shadow"
-    />
-    <h6 class="h6 mt-2 text-light font-weight-light">{{ function.title }}</h6>
-  </div>
+    <div
+        class="
+            layout-container-item
+            d-flex
+            flex-column
+            align-items-center
+            mb-4
+            cursor-pointer
+        "
+        *ngFor="let function of functions; let i = index; trackBy: trackByFn"
+        (click)="routeTo(function)"
+    >
+        <img
+            [src]="'./assets/icons/' + function.icon"
+            [alt]="function.description"
+            width="110"
+            height="110"
+            class="rounded shadow"
+        />
+        <h6 class="h6 mt-2 text-light font-weight-light">
+            {{ function.title }}
+        </h6>
+    </div>
 </div>

@@ -8,7 +8,10 @@ import { FormsModule } from '@angular/forms';
 import { SlateModule } from 'slate-angular';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatIconModule } from '@angular/material/icon';
 import { FunctionalEditorBasicComponent } from './slate-editor/basic/basic.component';
 import { FunctionalEditorUnilineComponent } from './slate-editor/uniline/uniline.component';
 import { AppRoutingModule } from '../app-routing.module';
@@ -20,35 +23,40 @@ import { TheBaseElementComponent } from './slate-editor/common/label/base-elemen
 import { CommonLabelComponent } from './slate-editor/common/label/label.component';
 import { FunctionalEditorMoreTemplateComponent } from './slate-editor/more-template/more.component';
 import { FunctionalEditorReadOnlyComponent } from './slate-editor/read-only/read-only.component';
+import { NgCodeDiffModule } from 'ng-code-diff';
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    DragDropModule,
-    MatButtonModule,
-    MatMenuModule,
-    MatSlideToggleModule,
-    FormsModule,
-    SlateModule,
-    AppRoutingModule,
-  ],
-  exports: [],
-  declarations: [
-    FunctionalDragDropComponent,
-    FunctionalDynamicComponent,
-    FunctionalEditorComponent,
-    FunctionalEditorBasicComponent,
-    FunctionalEditorUnilineComponent,
-    FunctionalEditorEmailComponent,
-    FunctionalEditorMentionsComponent,
-    FunctionalEditorDataTransformComponent,
-    FunctionalEditorInsertDynamicDataComponent,
-    FunctionalEditorMoreTemplateComponent,
-    FunctionalEditorReadOnlyComponent,
-    TheBaseElementComponent,
-    CommonLabelComponent,
-  ],
-  providers: [],
-  entryComponents: [],
+    imports: [
+        BrowserModule,
+        DragDropModule,
+        MatButtonModule,
+        MatMenuModule,
+        MatSlideToggleModule,
+        MatTabsModule,
+        MatToolbarModule,
+        MatIconModule,
+        NgCodeDiffModule,
+        FormsModule,
+        SlateModule,
+        AppRoutingModule,
+    ],
+    exports: [],
+    declarations: [
+        FunctionalDragDropComponent,
+        FunctionalDynamicComponent,
+        FunctionalEditorComponent,
+        FunctionalEditorBasicComponent,
+        FunctionalEditorUnilineComponent,
+        FunctionalEditorEmailComponent,
+        FunctionalEditorMentionsComponent,
+        FunctionalEditorDataTransformComponent,
+        FunctionalEditorInsertDynamicDataComponent,
+        FunctionalEditorMoreTemplateComponent,
+        FunctionalEditorReadOnlyComponent,
+        TheBaseElementComponent,
+        CommonLabelComponent,
+    ],
+    providers: [],
+    entryComponents: [],
 })
 export class FunctionalModule {}

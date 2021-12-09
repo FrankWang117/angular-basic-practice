@@ -3,44 +3,36 @@ import { Component, ViewChild, TemplateRef } from '@angular/core';
 import { createEditor, Element } from 'slate';
 import { withHistory } from 'slate-history';
 import { withAngular } from 'slate-angular';
-
+import { FLOW_VALUE, FLOW_VALUE_FORMAT } from './flow-value';
+import { SLATE_VALUE, SLATE_VALUE_FORMAT } from './slate-value';
+import { withDynamicData } from 'src/app/utils';
+import { INIT_VALUE, RULE_LIST } from 'src/app/const';
+import { EmptyText, LabelElement } from 'src/types';
 @Component({
     selector: 'functional-editor-data-transform',
     templateUrl: 'data-transform.component.html',
 })
 export class FunctionalEditorDataTransformComponent implements OnInit {
-    title = 'data transform';
-    public value = initialValue;
+    public title = 'data transform';
 
-    public unilineValue = [
-        {
-            type: 'paragraph',
-            children: [{ text: 'This is editable ' }],
-        },
-    ];
+    public value = INIT_VALUE;
 
-    @ViewChild('heading_1', { read: TemplateRef, static: true })
-    headingOneTemplate!: TemplateRef<any>;
+    public oldStr = FLOW_VALUE_FORMAT;
 
-    @ViewChild('heading_2', { read: TemplateRef, static: true })
-    headingTwoTemplate!: TemplateRef<any>;
+    public newStr = SLATE_VALUE_FORMAT;
 
-    @ViewChild('heading_3', { read: TemplateRef, static: true })
-    headingThreeTemplate!: TemplateRef<any>;
+    public context = 5;
 
-    @ViewChild('blockquote', { read: TemplateRef, static: true })
-    blockquoteTemplate!: TemplateRef<any>;
+    public formatMode = 'side-by-side';
 
-    @ViewChild('ul', { read: TemplateRef, static: true })
-    ulTemplate!: TemplateRef<any>;
+    public isDoneForFlowToSlate = false;
 
-    @ViewChild('ol', { read: TemplateRef, static: true })
-    olTemplate!: TemplateRef<any>;
+    public isDoneForSlateToFlow = false;
 
-    @ViewChild('li', { read: TemplateRef, static: true })
-    liTemplate!: TemplateRef<any>;
+    public editor = withDynamicData(withHistory(withAngular(createEditor())));
 
-    editor = withHistory(withAngular(createEditor()));
+    @ViewChild('label', { read: TemplateRef, static: true })
+    labelTemplate!: TemplateRef<any>;
 
     constructor() {}
 
@@ -53,17 +45,31 @@ export class FunctionalEditorDataTransformComponent implements OnInit {
     }
 
     renderElement = (element: any) => {
+        if (element.type === 'dynamic') {
+            return this.labelTemplate;
+        }
         return null;
     };
+
+    public flowToSlate() {
+        const value = parseFlowToSlateValue(FLOW_VALUE);
+        this.value = value;
+        this.oldStr = SLATE_VALUE_FORMAT;
+        this.newStr = JSON.stringify(value, null, 4);
+        this.isDoneForSlateToFlow = false;
+        this.isDoneForFlowToSlate = true;
+    }
+
+    public slateToFlow() {
+        const value = buildSlateValueToFlow(SLATE_VALUE);
+        this.oldStr = FLOW_VALUE_FORMAT;
+        this.newStr = JSON.stringify(value, null, 4);
+        this.isDoneForFlowToSlate = false;
+        this.isDoneForSlateToFlow = true;
+    }
 }
 
-const initialValue = [
-    {
-        type: 'paragraph',
-        children: [{ text: 'This is editable ' }],
-    },
-];
-function parseOriginValue(originValue) {
+function parseFlowToSlateValue(originValue) {
     if (!Array.isArray(originValue)) {
         throw new TypeError('value must be Array');
     }
@@ -75,8 +81,8 @@ function parseOriginValue(originValue) {
             newLine.push(item);
         }
         if (item.ref_value === '\n' || index === originValue.length - 1) {
-            // 转换 以及清空
-            const newLineResult = parseOriginValueLine(newLine);
+            // 转换以及清空
+            const newLineResult = parseFlowLineValue(newLine);
             result.push(newLineResult);
             newLine.length = 0;
         }
@@ -84,22 +90,25 @@ function parseOriginValue(originValue) {
     return result;
 }
 
-function parseOriginValueLine(originLineValue) {
+function parseFlowLineValue(originLineValue) {
     const lineResult = originLineValue.map((item) => {
         if (item.ref_type === 'static') {
             return {
                 text: item.ref_value,
             };
         } else if (item.ref_type === 'dynamic') {
+            console.log('item', item);
+            const { rule_step_id: id, property_name } = item.ref_value;
+            const step = RULE_LIST[id].find(
+                (rule) => rule.propertyName === property_name
+            );
             return {
                 type: 'dynamic',
                 data: {
-                    stepId: '61b1af1c1dc2f8c521aca578',
-                    stepIdentifier: 'S-7',
-                    stepName: '',
-                    propertyName: 'uids',
-                    propertyText: '查找到的成员合集',
-                    type: 'text',
+                    rule_step_id: id,
+                    rule_step_identifier: step.identifier,
+                    property_text: step.text,
+                    property_name: step.propertyName,
                 },
                 children: [{ text: '' }],
             };
@@ -110,160 +119,54 @@ function parseOriginValueLine(originLineValue) {
         children: lineResult,
     };
 }
-const originValue = [
-    {
-        ref_type: 'static',
-        ref_value: 'Pull Request已创建，请相关人员前往Review。',
-    },
-    {
-        ref_type: 'static',
-        ref_value: '\n',
-    },
-    {
-        ref_type: 'static',
-        ref_value: '评审人： ',
-    },
-    {
-        ref_type: 'dynamic',
-        ref_value: {
-            rule_step_id: '61b1af1c1dc2f8c521aca578',
-            property_name: 'uids',
-        },
-    },
-    {
-        ref_type: 'static',
-        ref_value: ' ',
-    },
-    {
-        ref_type: 'static',
-        ref_value: '\n',
-    },
-    {
-        ref_type: 'static',
-        ref_value: '地址： ',
-    },
-    {
-        ref_type: 'dynamic',
-        ref_value: {
-            rule_step_id: '61b1af1c1dc2f8c521aca572',
-            property_name: 'pull_request_html_url',
-        },
-    },
-    {
-        ref_type: 'static',
-        ref_value: ' ',
-    },
-    {
-        ref_type: 'static',
-        ref_value: '\n',
-    },
-    {
-        ref_type: 'static',
-        ref_value: '标题： ',
-    },
-    {
-        ref_type: 'dynamic',
-        ref_value: {
-            rule_step_id: '61b1af1c1dc2f8c521aca572',
-            property_name: 'pull_request_title',
-        },
-    },
-    {
-        ref_type: 'static',
-        ref_value: ' ',
-    },
-    {
-        ref_type: 'static',
-        ref_value: '\n',
-    },
-    {
-        ref_type: 'static',
-        ref_value: '创建时间：',
-    },
-    {
-        ref_type: 'dynamic',
-        ref_value: {
-            rule_step_id: '000000000000000000000000',
-            property_name: 'now',
-        },
-    },
-    {
-        ref_type: 'static',
-        ref_value: '\n',
-    },
-];
 
-const newValue = [
-    {
-        type: 'paragraph',
-        children: [{ text: 'Pull Request已创建，请相关人员前往Review。' }],
-    },
-    {
-        type: 'paragraph',
-        children: [
-            { text: '评审人：' },
-            {
-                type: 'dynamic',
-                data: {
-                    stepId: '777777',
-                    stepIdentifier: 'S-7',
-                    stepName: '',
-                    propertyName: '查找到的成员合集',
-                    type: 'text',
-                },
-                children: [{ text: '' }],
-            },
-        ],
-    },
-    {
-        type: 'paragraph',
-        children: [
-            { text: '地址：' },
-            {
-                type: 'dynamic',
-                data: {
-                    stepId: '111111',
-                    stepIdentifier: 'S-1',
-                    stepName: '',
-                    propertyName: 'Pull Request 显示地址',
-                    type: 'text',
-                },
-                children: [{ text: '' }],
-            },
-        ],
-    },
-    {
-        type: 'paragraph',
-        children: [
-            { text: '标题：' },
-            {
-                type: 'dynamic',
-                data: {
-                    stepId: '111111',
-                    stepIdentifier: 'S-1',
-                    stepName: '',
-                    propertyName: 'Pull Request 标题',
-                    type: 'text',
-                },
-                children: [{ text: '' }],
-            },
-        ],
-    },
-    {
-        type: 'paragraph',
-        children: [
-            { text: '创建时间：' },
-            {
-                type: 'dynamic',
-                data: {
-                    stepId: '000000',
-                    stepIdentifier: '',
-                    stepName: '',
-                    propertyName: '当前时间',
-                    type: 'timestamp',
-                },
-                children: [{ text: '' }],
-            },
-        ],
-    },
-];
+function buildSlateValueToFlow(slateValue: Element[]) {
+    if (!Array.isArray(slateValue)) {
+        throw new TypeError('value must be Array');
+    }
+    let result = [];
+
+    slateValue.forEach((item, index: number) => {
+        if (index !== 0) {
+            result.push({
+                ref_type: 'static',
+                ref_value: '\n',
+            });
+        }
+        const newLine = buildSlateLineValue(item.children);
+        result.push(...newLine);
+    });
+    return result;
+}
+
+function buildSlateLineValue(slateValue) {
+    const line = [];
+    slateValue.forEach((item) => {
+        if (!item.type && (item as unknown as EmptyText).text) {
+            line.push({
+                ref_type: 'static',
+                ref_value: (item as unknown as EmptyText).text,
+            });
+        } else if (item.type === 'dynamic') {
+            line.push(
+                ...[
+                    {
+                        ref_type: 'dynamic',
+                        ref_value: {
+                            rule_step_id: (item as LabelElement).data
+                                .rule_step_id,
+                            property_name: (item as LabelElement).data
+                                .property_name,
+                        },
+                    },
+                    {
+                        ref_type: 'static',
+                        ref_value: ' ',
+                    },
+                ]
+            );
+        }
+        // TODO 没有转换email
+    });
+    return line;
+}

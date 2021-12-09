@@ -1,78 +1,37 @@
-<h1 class="d-flex justify-content-center my-2">{{ title }}</h1>
-<ul class="nav">
-  <li class="nav-item">
-    <a
-      class="nav-link"
-      href="javascript:;"
-      [routerLink]="['basic']"
-      routerLinkActive="active"
-      >Basic</a
+<mat-toolbar color="primary">
+    <button
+        [routerLink]="['../']"
+        mat-icon-button
+        aria-label="back to home page"
     >
-  </li>
-  <li class="nav-item">
-    <a
-      class="nav-link"
-      href="javascript:;"
-      [routerLink]="['uniline']"
-      routerLinkActive="active"
-      >Uniline</a
-    >
-  </li>
-  <li class="nav-item">
-    <a
-      class="nav-link"
-      href="javascript:;"
-      [routerLink]="['email']"
-      routerLinkActive="active"
-      >Email</a
-    >
-  </li>
-  <!-- <li class="nav-item">
-    <a
-      class="nav-link"
-      href="javascript:;"
-      [routerLink]="['mention']"
-      routerLinkActive="active"
-      >Mentions</a
-    >
-  </li> -->
-  <li class="nav-item">
-    <a
-      class="nav-link"
-      href="javascript:;"
-      [routerLink]="['dynamic']"
-      routerLinkActive="active"
-      >InsertDynamicData</a
-    >
-  </li>
-  <li class="nav-item">
-    <a
-      class="nav-link"
-      href="javascript:;"
-      [routerLink]="['transform']"
-      routerLinkActive="active"
-      >DataTransform</a
-    >
-  </li>
+        <mat-icon>home</mat-icon>
+    </button>
+    <span>{{ title }}</span>
+    <span class="example-spacer"></span>
 
-  <li class="nav-item">
+    <button mat-icon-button aria-label="go to github page">
+        <mat-icon>cloud_circle</mat-icon>
+    </button>
+</mat-toolbar>
+<nav mat-tab-nav-bar backgroundColor="primary">
     <a
-      class="nav-link"
-      href="javascript:;"
-      [routerLink]="['more']"
-      routerLinkActive="active"
-      >MoreTemplates</a
+        mat-tab-link
+        *ngFor="let link of links"
+        [routerLink]="[link.href]"
+        (click)="activeLink = link.href"
+        [active]="activeLink == link.href"
     >
-  </li>
-  <li class="nav-item">
-    <a
-      class="nav-link"
-      href="javascript:;"
-      [routerLink]="['read-only']"
-      routerLinkActive="active"
-      >ReadOnlyMode</a
-    >
-  </li>
-</ul>
+        {{ link.text }}
+    </a>
+</nav>
+<!-- <li class="nav-item">
+<a
+  class="nav-link"
+  href="javascript:;"
+  [routerLink]="['mention']"
+  routerLinkActive="active"
+  >Mentions</a
+>
+</li> -->
 
 <router-outlet></router-outlet>

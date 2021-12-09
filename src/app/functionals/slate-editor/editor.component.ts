@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'functional-editor',
@@ -44,7 +45,11 @@ export class FunctionalEditorComponent implements OnInit {
         },
     ];
 
-    constructor() {}
+    constructor(public router: Router) {
+        const urlArr = this.router.url.split('/');
+        const currentUrl = urlArr.pop();
+        this.activeLink = currentUrl;
+    }
 
     ngOnInit() {}
 }

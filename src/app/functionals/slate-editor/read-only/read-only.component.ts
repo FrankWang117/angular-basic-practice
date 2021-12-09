@@ -40,14 +40,14 @@ export class FunctionalEditorReadOnlyComponent implements OnInit {
                 {
                     type: 'dynamic',
                     data: {
-                        stepId: '777777',
-                        stepIdentifier: 'S-7',
-                        stepName: '',
-                        propertyName: '查找到的成员合集',
-                        type: 'text',
+                        rule_step_id: '61b1af1c1dc2f8c521aca578',
+                        rule_step_identifier: 'S-7',
+                        property_text: '查找到的成员合集',
+                        property_name: 'uids',
                     },
                     children: [{ text: '' }],
                 },
+                { text: '' },
             ],
         },
         {
@@ -57,14 +57,14 @@ export class FunctionalEditorReadOnlyComponent implements OnInit {
                 {
                     type: 'dynamic',
                     data: {
-                        stepId: '111111',
-                        stepIdentifier: 'S-1',
-                        stepName: '',
-                        propertyName: 'Pull Request 显示地址',
-                        type: 'text',
+                        rule_step_id: '61b1af1c1dc2f8c521aca572',
+                        rule_step_identifier: 'S-1',
+                        property_text: 'Pull Request 显示地址',
+                        property_name: 'pull_request_html_url',
                     },
                     children: [{ text: '' }],
                 },
+                { text: '' },
             ],
         },
         {
@@ -74,14 +74,14 @@ export class FunctionalEditorReadOnlyComponent implements OnInit {
                 {
                     type: 'dynamic',
                     data: {
-                        stepId: '111111',
-                        stepIdentifier: 'S-1',
-                        stepName: '',
-                        propertyName: 'Pull Request 标题',
-                        type: 'text',
+                        rule_step_id: '61b1af1c1dc2f8c521aca572',
+                        rule_step_identifier: 'S-1',
+                        property_text: 'Pull Request 标题',
+                        property_name: 'pull_request_title',
                     },
                     children: [{ text: '' }],
                 },
+                { text: '' },
             ],
         },
         {
@@ -91,32 +91,30 @@ export class FunctionalEditorReadOnlyComponent implements OnInit {
                 {
                     type: 'dynamic',
                     data: {
-                        stepId: '000000',
-                        stepIdentifier: '',
-                        stepName: '',
-                        propertyName: '当前时间',
-                        type: 'timestamp',
+                        rule_step_id: '000000000000000000000000',
+                        rule_step_identifier: '',
+                        property_text: '当前时间',
+                        property_name: 'now',
                     },
                     children: [{ text: '' }],
                 },
+                { text: '' },
             ],
         },
     ];
 
     public dynamicDataList = [
         {
-            stepId: '111111',
-            stepIdentifier: 'S-1',
-            stepName: '',
-            propertyName: '工作项标题',
-            type: 'text',
+            rule_step_id: '6114cdfc3701a1a22313f628',
+            rule_step_identifier: 'S-1',
+            property_text: '工作项标题',
+            property_name: 'title',
         },
         {
-            stepId: '000000',
-            stepIdentifier: '',
-            stepName: '',
-            propertyName: '团队',
-            type: 'number',
+            rule_step_id: '000000000000000000000000',
+            rule_step_identifier: '',
+            property_text: '团队',
+            property_name: 'team',
         },
     ];
 

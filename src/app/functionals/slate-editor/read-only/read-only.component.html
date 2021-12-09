@@ -22,7 +22,7 @@
     <mat-menu #menu="matMenu">
         <ng-container *ngFor="let item of dynamicDataList">
             <button mat-menu-item (click)="addDynamic(item)">
-                {{ item.stepIdentifier }}{{ item.propertyName }}
+                {{ item.rule_step_identifier }}{{ item.property_text }}
             </button>
         </ng-container>
     </mat-menu>

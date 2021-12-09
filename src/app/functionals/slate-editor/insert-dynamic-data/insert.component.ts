@@ -16,8 +16,8 @@ import {
 import { withHistory } from 'slate-history';
 import { AngularEditor, withAngular } from 'slate-angular';
 import { LabelElement } from 'src/types';
-import { INIT_VALUE } from 'src/app/const';
 import { withDynamicData } from 'src/app/utils';
+import { CommonLabelComponent } from '../common/label/label.component';
 
 @Component({
     selector: 'functional-editor-insert-dynamic-data',
@@ -35,18 +35,16 @@ export class FunctionalEditorInsertDynamicDataComponent implements OnInit {
 
     public dynamicDataList = [
         {
-            stepId: '111111',
-            stepIdentifier: 'S-1',
-            stepName: '创建工作项',
-            propertyName: '工作项标题',
-            type: 'text',
+            rule_step_id: '6114cdfc3701a1a22313f628',
+            rule_step_identifier: 'S-1',
+            property_text: '工作项标题',
+            property_name: 'title',
         },
         {
-            stepId: '000000',
-            stepIdentifier: '',
-            stepName: '',
-            propertyName: '当前月份',
-            type: 'number',
+            rule_step_id: '000000000000000000000000',
+            rule_step_identifier: '',
+            property_text: '当前月份',
+            property_name: 'month',
         },
     ];
 
@@ -65,6 +63,12 @@ export class FunctionalEditorInsertDynamicDataComponent implements OnInit {
 
     public onBlur = (event: FocusEvent) => {
         this.setTarget();
+    };
+
+    public onFocus = (event: FocusEvent) => {
+        console.log('⬇️ This is 🌟 event 🌟 value start line ⬇️');
+        console.log(event);
+        console.log('⬆️ This is end ⬆️');
     };
 
     private setTarget() {
@@ -126,15 +130,21 @@ export class FunctionalEditorInsertDynamicDataComponent implements OnInit {
         AngularEditor.focus(editor);
     };
 
-    public removeLabel() {
-        const { selection } = this.editor;
-        Transforms.removeNodes(this.editor, {
-            at: selection,
-        });
+    public removeLabel(label: CommonLabelComponent) {
+        const { editor } = label;
+        const { selection } = editor;
+        console.log('⬇️ This is 🌟  remove Label🌟 value start line ⬇️');
+        console.log(selection);
+        console.log('⬆️ This is end ⬆️');
+        if (selection) {
+            Transforms.removeNodes(this.editor, {
+                at: selection,
+            });
+        }
         const content = this.editor.children;
 
-        if (Array.isArray(content) && content.length === 0) {
-            Transforms.insertNodes(this.editor, INIT_VALUE[0]);
-        }
+        // if (Array.isArray(content) && content.length === 0) {
+        //     Transforms.insertNodes(this.editor, INIT_VALUE[0]);
+        // }
     }
 }

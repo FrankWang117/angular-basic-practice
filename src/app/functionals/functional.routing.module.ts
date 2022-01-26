@@ -10,57 +10,62 @@ import { FunctionalEditorMentionsComponent } from './slate-editor/mentions/menti
 import { FunctionalEditorMoreTemplateComponent } from './slate-editor/more-template/more.component';
 import { FunctionalEditorReadOnlyComponent } from './slate-editor/read-only/read-only.component';
 import { FunctionalEditorUnilineComponent } from './slate-editor/uniline/uniline.component';
+import { FunctionalStructuralDirectiveComponent } from './structural-directive/structural.component';
 
 export const functionalRoutes: Routes = [
-  {
-    path: 'drag',
-    component: FunctionalDragDropComponent,
-  },
-  {
-    path: 'dynamic',
-    component: FunctionalDynamicComponent,
-  },
-  {
-    path: 'editor',
-    component: FunctionalEditorComponent,
-    children: [
-      {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'basic',
-      },
-      {
-        path: 'basic',
-        component: FunctionalEditorBasicComponent,
-      },
-      {
-        path: 'uniline',
-        component: FunctionalEditorUnilineComponent,
-      },
-      {
-        path: 'email',
-        component: FunctionalEditorEmailComponent,
-      },
-      {
-        path: 'mention',
-        component: FunctionalEditorMentionsComponent,
-      },
-      {
-        path: 'transform',
-        component: FunctionalEditorDataTransformComponent,
-      },
-      {
+    {
+        path: 'drag',
+        component: FunctionalDragDropComponent,
+    },
+    {
         path: 'dynamic',
-        component: FunctionalEditorInsertDynamicDataComponent,
-      },
-      {
-        path: 'more',
-        component: FunctionalEditorMoreTemplateComponent,
-      },
-      {
-        path: 'read-only',
-        component: FunctionalEditorReadOnlyComponent,
-      },
-    ],
-  },
+        component: FunctionalDynamicComponent,
+    },
+    {
+        path: 'editor',
+        component: FunctionalEditorComponent,
+        children: [
+            {
+                path: '',
+                pathMatch: 'full',
+                redirectTo: 'basic',
+            },
+            {
+                path: 'basic',
+                component: FunctionalEditorBasicComponent,
+            },
+            {
+                path: 'uniline',
+                component: FunctionalEditorUnilineComponent,
+            },
+            {
+                path: 'email',
+                component: FunctionalEditorEmailComponent,
+            },
+            {
+                path: 'mention',
+                component: FunctionalEditorMentionsComponent,
+            },
+            {
+                path: 'transform',
+                component: FunctionalEditorDataTransformComponent,
+            },
+            {
+                path: 'dynamic',
+                component: FunctionalEditorInsertDynamicDataComponent,
+            },
+            {
+                path: 'more',
+                component: FunctionalEditorMoreTemplateComponent,
+            },
+            {
+                path: 'read-only',
+                component: FunctionalEditorReadOnlyComponent,
+            },
+        ],
+    },
+    {
+        path: 'structural-directive',
+        component: FunctionalStructuralDirectiveComponent,
+    },
 ];

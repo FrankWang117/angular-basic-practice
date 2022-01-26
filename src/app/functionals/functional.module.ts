@@ -24,6 +24,7 @@ import { CommonLabelComponent } from './slate-editor/common/label/label.componen
 import { FunctionalEditorMoreTemplateComponent } from './slate-editor/more-template/more.component';
 import { FunctionalEditorReadOnlyComponent } from './slate-editor/read-only/read-only.component';
 import { NgCodeDiffModule } from 'ng-code-diff';
+import { FunctionalStructuralDirectiveComponent } from './structural-directive/structural.component';
 
 @NgModule({
     imports: [
@@ -55,6 +56,7 @@ import { NgCodeDiffModule } from 'ng-code-diff';
         FunctionalEditorReadOnlyComponent,
         TheBaseElementComponent,
         CommonLabelComponent,
+        FunctionalStructuralDirectiveComponent,
     ],
     providers: [],
     entryComponents: [],

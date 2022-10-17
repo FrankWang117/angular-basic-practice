@@ -30,8 +30,3 @@ export const functions: FunctionInfo[] = [
         route: 'structural-directive',
     },
 ];
-
-/**
- some test for revert code
-
-*/

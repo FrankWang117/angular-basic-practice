@@ -29,4 +29,11 @@ export const functions: FunctionInfo[] = [
         description: '实现结构型指令',
         route: 'structural-directive',
     },
+    {
+        id: 4,
+        icon: 'di.png',
+        title: 'DI',
+        description: '依赖注入',
+        route: 'di',
+    },
 ];

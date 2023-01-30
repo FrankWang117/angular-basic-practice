@@ -4,21 +4,21 @@ import { FunctionInfo } from '../entities';
 import { functions } from './functions.config';
 
 @Component({
-  selector: 'practice-layout',
-  templateUrl: './layout.component.html',
+    selector: 'practice-layout',
+    templateUrl: './layout.component.html',
 })
 export class LayoutComponent implements OnInit {
-  public functions = functions;
+    public functions = functions;
 
-  constructor(private router: Router) {}
+    constructor(private router: Router) {}
 
-  ngOnInit() {}
+    ngOnInit() {}
 
-  public routeTo(item: FunctionInfo) {
-    this.router.navigateByUrl(item.route);
-  }
+    public routeTo(item: FunctionInfo) {
+        this.router.navigateByUrl(item.route);
+    }
 
-  trackByFn(index: number, item: FunctionInfo): number {
-    return item.id || index;
-  }
+    trackByFn(index: number, item: FunctionInfo): number {
+        return item.id || index;
+    }
 }

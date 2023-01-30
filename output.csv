@@ -1,0 +1,112 @@
+
+@angular/animations                 😎  MAJOR UP  Major update available. https://github.com/angular/angular#readme
+                                                 npm install @angular/animations@14.1.3 --save to go from 12.2.14 to 14.1.3
+
+@angular/cdk                        😎  MAJOR UP  Major update available. https://github.com/angular/components#readme
+                                                 npm install @angular/cdk@14.1.3 --save to go from 11.0.3 to 14.1.3
+
+@angular/common                     😎  MAJOR UP  Major update available. https://github.com/angular/angular#readme
+                                                 npm install @angular/common@14.1.3 --save to go from 12.2.14 to 14.1.3
+
+@angular/compiler                   😎  MAJOR UP  Major update available. https://github.com/angular/angular#readme
+                                                 npm install @angular/compiler@14.1.3 --save to go from 12.2.14 to 14.1.3
+
+@angular/core                       😎  MAJOR UP  Major update available. https://github.com/angular/angular#readme
+                                                 npm install @angular/core@14.1.3 --save to go from 12.2.14 to 14.1.3
+
+@angular/forms                      😎  MAJOR UP  Major update available. https://github.com/angular/angular#readme
+                                                 npm install @angular/forms@14.1.3 --save to go from 12.2.14 to 14.1.3
+
+@angular/material                   😎  MAJOR UP  Major update available. https://github.com/angular/components#readme
+                                                 npm install @angular/material@14.1.3 --save to go from 11.0.3 to 14.1.3
+
+@angular/platform-browser           😎  MAJOR UP  Major update available. https://github.com/angular/angular#readme
+                                                 npm install @angular/platform-browser@14.1.3 --save to go from 12.2.14 to 14.1.3
+
+@angular/platform-browser-dynamic   😎  MAJOR UP  Major update available. https://github.com/angular/angular#readme
+                                                 npm install @angular/platform-browser-dynamic@14.1.3 --save to go from 12.2.14 to 14.1.3
+
+@angular/router                     😎  MAJOR UP  Major update available. https://github.com/angular/angular/tree/main/packages/router
+                                                 npm install @angular/router@14.1.3 --save to go from 12.2.14 to 14.1.3
+
+bootstrap                           😎  MAJOR UP  Major update available. https://getbootstrap.com/
+                                                 npm install bootstrap@5.2.0 --save to go from 4.6.0 to 5.2.0
+
+debug                               😕  NOTUSED?  Still using debug?
+                                                 Depcheck did not find code similar to require('debug') or import from 'debug'.
+                                                 Check your code before removing as depcheck isn't able to foresee all ways dependencies can be used.
+                                                 Use rc file options to remove unused check, but still monitor for outdated version:
+                                                     .npmcheckrc {"depcheck": {"ignoreMatches": ["debug"]}}
+                                                 Use --skip-unused to skip this check.
+                                                 To remove this package: npm uninstall debug --save
+
+direction                           😎  MAJOR UP  Major update available. https://github.com/wooorm/direction#readme
+                                                 npm install direction@2.0.1 --save to go from 1.0.4 to 2.0.1
+                                    😕  NOTUSED?  Still using direction?
+                                                 Depcheck did not find code similar to require('direction') or import from 'direction'.
+                                                 Check your code before removing as depcheck isn't able to foresee all ways dependencies can be used.
+                                                 Use rc file options to remove unused check, but still monitor for outdated version:
+                                                     .npmcheckrc {"depcheck": {"ignoreMatches": ["direction"]}}
+                                                 Use --skip-unused to skip this check.
+                                                 To remove this package: npm uninstall direction --save
+
+is-hotkey                           😎  NEW VER!  NonSemver update available. https://github.com/ianstormtaylor/is-hotkey
+                                                 npm install is-hotkey@0.2.0 --save to go from 0.1.8 to 0.2.0
+                                    😕  NOTUSED?  Still using is-hotkey?
+                                                 Depcheck did not find code similar to require('is-hotkey') or import from 'is-hotkey'.
+                                                 Check your code before removing as depcheck isn't able to foresee all ways dependencies can be used.
+                                                 Use rc file options to remove unused check, but still monitor for outdated version:
+                                                     .npmcheckrc {"depcheck": {"ignoreMatches": ["is-hotkey"]}}
+                                                 Use --skip-unused to skip this check.
+                                                 To remove this package: npm uninstall is-hotkey --save
+
+lodash                              😕  NOTUSED?  Still using lodash?
+                                                 Depcheck did not find code similar to require('lodash') or import from 'lodash'.
+                                                 Check your code before removing as depcheck isn't able to foresee all ways dependencies can be used.
+                                                 Use rc file options to remove unused check, but still monitor for outdated version:
+                                                     .npmcheckrc {"depcheck": {"ignoreMatches": ["lodash"]}}
+                                                 Use --skip-unused to skip this check.
+                                                 To remove this package: npm uninstall lodash --save
+
+ngx-bootstrap                       😎  MAJOR UP  Major update available. https://github.com/valor-software/ngx-bootstrap#readme
+                                                 npm install ngx-bootstrap@9.0.0 --save to go from 6.2.0 to 9.0.0
+                                    😕  NOTUSED?  Still using ngx-bootstrap?
+                                                 Depcheck did not find code similar to require('ngx-bootstrap') or import from 'ngx-bootstrap'.
+                                                 Check your code before removing as depcheck isn't able to foresee all ways dependencies can be used.
+                                                 Use rc file options to remove unused check, but still monitor for outdated version:
+                                                     .npmcheckrc {"depcheck": {"ignoreMatches": ["ngx-bootstrap"]}}
+                                                 Use --skip-unused to skip this check.
+                                                 To remove this package: npm uninstall ngx-bootstrap --save
+
+rxjs                                😎  MAJOR UP  Major update available. https://rxjs.dev
+                                                 npm install rxjs@7.5.6 --save to go from 6.6.3 to 7.5.6
+
+slate                               😎  NEW VER!  NonSemver update available. https://github.com/ianstormtaylor/slate#readme
+                                                 npm install slate@0.82.1 --save to go from 0.67.1 to 0.82.1
+
+slate-angular                       😎  MAJOR UP  Major update available. https://github.com/worktile/slate-angular#readme
+                                                 npm install slate-angular@13.1.0 --save to go from 1.6.5 to 13.1.0
+
+slate-history                       😎  NEW VER!  NonSemver update available. https://github.com/ianstormtaylor/slate#readme
+                                                 npm install slate-history@0.66.0 --save to go from 0.62.0 to 0.66.0
+
+tslib                               😍  UPDATE!   Your local install is out of date. https://www.typescriptlang.org/
+                                                 npm install tslib@2.4.0 --save to go from 2.0.3 to 2.4.0
+                                    😕  NOTUSED?  Still using tslib?
+                                                 Depcheck did not find code similar to require('tslib') or import from 'tslib'.
+                                                 Check your code before removing as depcheck isn't able to foresee all ways dependencies can be used.
+                                                 Use rc file options to remove unused check, but still monitor for outdated version:
+                                                     .npmcheckrc {"depcheck": {"ignoreMatches": ["tslib"]}}
+                                                 Use --skip-unused to skip this check.
+                                                 To remove this package: npm uninstall tslib --save
+
+zone.js                             😍  UPDATE!   Your local install is out of date. https://github.com/angular/angular#readme
+                                                 npm install zone.js@0.11.8 --save to go from 0.11.4 to 0.11.8
+
+eslint-config-prettier              😟  MISSING!  Not installed.
+                                    😟  PKG ERR!  Not in the package.json. Found in: /.eslintrc.json
+
+src                                 😟  PKG ERR!  Not in the package.json. Found in: /src/app/functionals/slate-editor/read-only/read-only.component.ts, /src/app/functionals/slate-editor/mentions/mentions.component.ts, /src/app/functionals/slate-editor/insert-dynamic-data/insert.component.ts, /src/app/functionals/slate-editor/email/email.component.ts, /src/app/functionals/slate-editor/data-transform/data-transform.component.ts, /src/app/functionals/slate-editor/common/label/label.component.ts
+                                    😟  PKG ERR!  A package.json was not found at /Users/frank/Documents/self/angularProjects/angular-basic-practice/src/package.json
+
+Use npm-check -u for interactive update.

@@ -1,0 +1,17 @@
+README.md
+angular.json
+auth.json
+dist
+e2e
+karma.conf.js
+node_modules
+output.txt
+package-lock.json
+package.json
+playwright-report
+playwright.config.ts
+src
+tests
+tsconfig.app.json
+tsconfig.json
+tsconfig.spec.json

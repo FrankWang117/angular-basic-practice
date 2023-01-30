@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { FunctionalDIComponent } from './di/di.component';
 import { FunctionalDragDropComponent } from './drag-drop/drag-drop.component';
 import { FunctionalDynamicComponent } from './dynamic-component/dynamic.component';
 import { FunctionalEditorBasicComponent } from './slate-editor/basic/basic.component';
@@ -67,5 +68,9 @@ export const functionalRoutes: Routes = [
     {
         path: 'structural-directive',
         component: FunctionalStructuralDirectiveComponent,
+    },
+    {
+        path: 'di',
+        component: FunctionalDIComponent,
     },
 ];
